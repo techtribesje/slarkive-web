@@ -1,0 +1,30 @@
+{
+    "name": "slarkive",
+    "version": "0.0.1",
+    "homepage": "",
+    "authors": [
+        ""
+    ],
+    "main": "index.html",
+    "license": "MIT",
+    "private": true,
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "vendor",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "jquery": "~2.1.4",
+        "bootswatch-dist": "paper",
+        "bootstrap-sidebar": "~0.2.2",
+        "angular": "~1.4.3",
+        "angular-ui-router": "~0.2.15",
+        "angular-cookies": "~1.4.3",
+        "angular-filter": "~0.5.4",
+        "angular-markdown-directive": "~0.3.1"
+
+    }
+}

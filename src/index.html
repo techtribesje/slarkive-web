@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html lang="en" ng-app="App">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Slarkive">
+        <meta name="author" content="Slarkive">
+
+        <title>Slarkive</title>
+
+        <!-- bower:css -->
+        <link rel="stylesheet" href="vendor/bootswatch-dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="vendor/bootstrap-sidebar/dist/css/sidebar.css" />
+        <!-- endbower -->
+
+        <link rel="stylesheet" href="css/style.css" />
+
+        <!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+    </head>
+
+    <body>
+        <div ui-view></div>
+    </body>
+    <!-- bower:js -->
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/bootswatch-dist/js/bootstrap.js"></script>
+    <script src="vendor/bootstrap-sidebar/dist/js/sidebar.js"></script>
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="vendor/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.js"></script>
+    <script src="vendor/showdown/src/showdown.js"></script>
+    <script src="vendor/angular-markdown-directive/markdown.js"></script>
+    <!-- endbower -->
+    <script src="app/app.js"></script>
+    <script src="app/config/routes.js"></script>
+    <script src="app/config/config.js"></script>
+    <script src="app/config/common.js"></script>
+    <script src="app/services/services.js"></script>
+    <script src="app/views/archive/archiveController.js"></script>
+    <script src="app/views/shared/layoutController.js"></script>
+</html>

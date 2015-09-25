@@ -1,0 +1,147 @@
+html, body {
+    padding-top: 0px;
+    background-color: #F5F5F5;
+}
+
+.main{
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+.main-header{
+    display:inline-block
+}
+.main-content{
+    width: auto;
+}
+
+/*messages */ 
+
+.list-group-item.message {
+    border: 0px solid #dddddd;
+}
+
+.list-group .list-group-item .row-picture, .list-group .list-group-item .row-action-primary {
+    float: left;
+    display: inline-block;
+    padding-right: 16px;
+}
+
+.list-group .list-group-item .row-picture img.circle, .list-group .list-group-item .row-action-primary img.circle {
+    border-radius: 100%;
+}
+
+.list-group-item-text {
+    color: #666666;
+}
+
+/*  search   */
+
+.search {
+    padding: 0px;
+}
+
+.search-header {
+    padding: 10px;
+    background-color: #553C7B;
+}
+
+.search-header h4 {
+    color: #FFF;
+}
+
+.search-header .close {
+    margin-top: -2px;
+    color: #FFF;
+    font-size: 24px;
+}
+
+.search-form {
+    padding-right: 10px;
+}
+
+.search.input-group-addon{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+/*  navbar   */
+
+.navbar-default .navbar-toggle.toggle-left {
+    float: left;
+    margin-left: 15px;
+}
+
+.navbar-default .navbar-toggle.toggle-right {
+    float: right;
+    margin-right: 15px;
+}
+
+.navbar-default .navbar-toggle.toggle-sidebar, [data-toggle="sidebar"] {
+    display: block;
+    float: left;
+}
+
+.navbar-default .navbar-toggle {
+    border-color:transparent;
+}
+
+.container .navbar-search {
+    display: block;
+    float: right !important;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
+    width: 100%;
+}
+
+.navbar-default .navbar-toggle .glyphicons-search {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.nav > li > a {
+    padding: 5px 15px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #0a6ebd;
+    background-color: #eeeeee;
+}
+
+
+/* sidebar settings */
+.sidebar {
+    position: fixed;
+    display: block;
+    top: 0px;
+    bottom: 0;
+    z-index: 1000;
+    min-height: 100%;
+    max-height: none;
+    overflow: auto;
+    
+    padding: 20px;
+    border-right: 1px solid #eee;
+}
+
+.sidebar-left {
+    background-color: #553C7B;
+}
+.sidebar-left h3{
+    color: white;
+}
+
+.sidebar-left p{
+    color: white;
+}
+
+.sidebar-right {
+    background-color: #FFF;
+    box-shadow: 0 1px 17px rgba(0,0,0,.5);
+    padding: 0px;
+}
+
+

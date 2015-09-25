@@ -1,0 +1,53 @@
+<div class="row">
+
+    <div class="col-md-10 center-block" style="float:none;">
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2">
+                <a ng-if="archivePage.navigation.prev"  ui-sref="app.archivet({ channel_id: archivePage.channel_id, ts : archivePage.navigation.prev })" class="btn btn-primary">Previous</a>
+            </div>  
+            <div class="col-xs-8 col-sm-8">
+                <p class="text-warning">{{errorMessage}}</p>
+            </div>  
+            <div class="col-xs-1 col-sm-2 text-right">
+                <a ng-if="archivePage.navigation.next"  ui-sref="app.archivet({ channel_id: archivePage.channel_id, ts : archivePage.navigation.next })" class="btn btn-primary">Next</a>
+            </div>  
+        </div>   
+
+        <div class="row">
+
+            <div class="col-md-12" ng-repeat="(key, value) in archivePage.messages | groupBy: 'date'">
+                <h6 class="text-center"><strong>{{ key }}</strong></h6>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+
+                        <div class="list-group">
+                            <div class="list-group-item message" ng-repeat="message in value">
+                                <div class="row-picture">
+                                    <img class="circle" src="img/avatar.png" alt="icon">
+                                </div>
+                                <div class="row-content">
+                                    <h6 class="list-group-item-heading"><strong>{{message.user}} </strong> <small>{{message.time}}</small></h6>
+                                    <p class="list-group-item-text" btf-markdown="message.text"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>  
+        </div> 
+
+        <div class="row">
+            <div class="col-xs-1 col-sm-2">
+                <a ng-if="archivePage.navigation.prev"  ui-sref="app.archivet({ channel_id: archivePage.channel_id, ts : archivePage.navigation.prev })" class="btn btn-primary">Previous</a>
+            </div>  
+            <div class="col-xs-8 col-sm-8">
+            </div>  
+            <div class="col-xs-1 col-sm-2 text-right">
+                <a ng-if="archivePage.navigation.next"  ui-sref="app.archivet({ channel_id: archivePage.channel_id, ts : archivePage.navigation.next })" class="btn btn-primary">Next</a>
+            </div>  
+        </div>   
+
+    </div>  
+</div> 

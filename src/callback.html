@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script>
+
+            function getQueryString() {
+                var result = {}, queryString = location.search.slice(1),
+                    re = /([^&=]+)=([^&]*)/g, m;
+
+                while (m = re.exec(queryString)) {
+                    result[decodeURIComponent(m[1])] = decodeURIComponent(m[2]);
+                }
+
+                return result;
+            }
+
+            function init() {
+                console.log('hash', location.hash);
+                
+                var code = getQueryString()['code'];
+
+                if (code != null)
+                    {
+                        var fullURL = window.location.href;
+                        var url = fullURL.substring( 0, fullURL.indexOf('callback.html') );
+                        url = url + '#/login/' + code;
+                        window.location.replace(url);
+                    }
+                    
+            }
+
+        </script>
+    </head>
+    <body onload="init()">
+
+    </body>
+</html>

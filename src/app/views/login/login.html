@@ -1,0 +1,14 @@
+<header id="top" class="header">
+    <div class="text-vertical-center">
+        <h1>Slarkive</h1>
+        <h3>Tech Tribes Slack Archive</h3>
+        <br>
+        <h4 ng-if="token">hi, {{userName}}</h4>
+        <br>
+        <button class="btn btn-primary btn-lg" ng-if="!token" ng-click="signIn()">Sign In</button>
+        <button class="btn btn-primary btn-lg" ng-if="token" ng-click="continue()">Continue</button>
+        <br>
+        <h4 class="text-danger" ng-if="errorMessage">{{errorMessage}}</h4>
+    </div>
+</header>
+

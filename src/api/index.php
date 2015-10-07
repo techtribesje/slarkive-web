@@ -5,15 +5,19 @@ require 'slim/Slim/Slim.php';
 \Slim\Slim::registerAutoloader();
 
 $app = new \Slim\Slim();
+
 $app->response->headers->set('Content-Type', 'application/json; charset=utf-8');
 
+$app->get('/token/:code', 'getToken');
 $app->get('/channels', 'getChannels');
 $app->get('/messages/:channel(/:ts)', 'getMessages');
-$app->get('/search/:search',	'searchMessage');
+$app->get('/search/:search',	'searchMessages');
+$app->get('/validatetoken/:token',	'validateToken');
 
 $app->run();
 
 function getMessages($channel, $ts=null) {
+    validateToken();
 
     $pageSize = 20;
 
@@ -72,7 +76,8 @@ function getMessages($channel, $ts=null) {
     }
 }
 
-function searchMessage($search) {
+function searchMessages($search) {
+    validateToken();
 
     $select = "SELECT messages.channel_slack_id, 
 				   channels.name as channel, 
@@ -121,6 +126,7 @@ function searchMessage($search) {
 }
 
 function getChannels() {
+    validateToken();
 
     $select = "SELECT distinct slack_id, name FROM channels INNER JOIN messages on channels.slack_id = messages.channel_slack_id  order by name;";
     try {
@@ -137,10 +143,48 @@ function getChannels() {
     }
 }
 
+function getToken($code){
 
+    $client_id = '';
+    $client_secret = '';
+    $redirect_uri = 'http://localhost:8088/slarkive-web/src/callback.html'; // must match the originally submitted URI 
 
-function createNavigation($channel, $pageSize,$messages)
-{
+    $url = 'https://slack.com/api/oauth.access?client_id='.$client_id.'&client_secret='.$client_secret.'&code='.$code.'&redirect_uri='.$redirect_uri;
+
+    $ch = curl_init ();
+    curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+    curl_setopt ( $ch, CURLOPT_URL, $url );
+    $result = curl_exec ( $ch );
+    curl_close ( $ch );
+    return $result;
+}
+
+function validateToken() {
+
+    $app = \Slim\Slim::getInstance();
+
+    $token = $app->request->headers->get('Authorization');
+
+    $url = 'https://slack.com/api/auth.test?token='.$token;
+
+    $ch = curl_init ();
+    curl_setopt ( $ch, CURLOPT_SSL_VERIFYPEER, 0 );
+    curl_setopt ( $ch, CURLOPT_URL, $url );
+    curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, TRUE);
+    $result = curl_exec ( $ch );
+    curl_close ( $ch );
+
+    $obj = json_decode($result);
+    if ($obj->ok == FALSE){
+        $app->status(401);
+        echo '{"error":"invalid token"}'; 
+        $app->stop();
+    }
+}
+
+// - private methods
+
+function createNavigation($channel, $pageSize,$messages){
     $prev_page = null;
     $next_page = null;
 
@@ -201,13 +245,11 @@ function createNavigation($channel, $pageSize,$messages)
 
 }
 
-
-function PrepareResult($string, $text)
-{
+function PrepareResult($string, $text){
     $var = explode(strtolower($string), strtolower($text));
 
     $beforeLen = $afterLen = 30;
-    
+
     if (strlen($var[0]) < $beforeLen)
         $beforeLen = strlen($var[0]);
 
@@ -216,8 +258,6 @@ function PrepareResult($string, $text)
 
     return "... " . substr($var[0],-$beforeLen) . $string . substr($var[1],0,$afterLen) . " ...";
 }
-
-
 
 function replaceUserID(){
 }
@@ -228,7 +268,7 @@ function getConnection() {
     $dbuser="root";
     $dbpass="";
     $dbname="slarkive";
-
+    
     $dbh = new PDO("mysql:host=$dbhost;dbname=$dbname;charset=utf8", $dbuser, $dbpass);	
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $dbh;

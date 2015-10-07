@@ -2,9 +2,19 @@
     <div class="row">
         <div class="col-xs-7 col-sm-3 col-md-3 col-lg-2 sidebar sidebar-left sidebar-animate sidebar-md-show">
 
-            <h3>Slarkive</h3>
-            <p>Techtribes Slack Archive</p>
+            <div class="sidebar-header text-center">
+                <h3>Slarkive</h3>
+                <span>Techtribes Slack Archive</span>
+                <div class="btn-group">
+                    <a href="#" class="btn btn-link"> {{userName}}</a>
+                    <a href="#" class="btn btn-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" ng-click="signOut()">Sign out</a></li>
+                    </ul>
+                </div>
+            </div>
 
+            <strong>Channels</strong>
             <ul class="nav nav-pills nav-stacked">
                 <li ng-class="{ 'active': channel.name == selectedChannel.name}" ng-repeat="channel in channelList">
                     <a style="cursor: pointer" ng-click="selectChannel(channel)"><strong> #{{channel.name}}</strong></a>
@@ -46,23 +56,23 @@
                         </div>
                     </form>
                 </div>
-                
+
                 <div class="search-content">
                     <div class="list-group">
                         <div class="list-group-item message" ng-repeat="message in messageList" >
                             <h6 class="list-group-item-heading">#{{message.channel}}</h6>
                             <h6 class="list-group-item-heading"><strong>{{message.user}}</strong>
                                 <small>
-                                    <a style="cursor:pointer" ui-sref="app.archivet({ channel_id: message.channel, ts : message.ts })"> {{message.date}} {{message.time}}</a>
+                                    <a style="cursor:pointer" ui-sref="app.archived({ channel_id: message.channel, ts : message.ts })"> {{message.date}} {{message.time}}</a>
                                 </small>
-                                    
+
                             </h6>
                             <p class="list-group-item-text" btf-markdown="message.text">
                             </p>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
 
         </div>

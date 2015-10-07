@@ -1,8 +1,9 @@
 'use strict';
 
-app.controller('ArchiveController', function ($scope, $rootScope, $state, $stateParams, $cookieStore, Services) {
+app.controller('MessageController', function ($scope, $rootScope, $state, $stateParams, $cookieStore, Services) {
 
     $scope.loadMessages = loadMessages;
+    
     $scope.archivePage = {};
     $scope.noMessages = false;
 
@@ -21,7 +22,7 @@ app.controller('ArchiveController', function ($scope, $rootScope, $state, $state
         else{
             $scope.selectedChannel.name = channel_id;
             
-            Services.getArchiveMessages(channel_id, ts)
+            Services.getMessages(channel_id, ts)
                 .success(function(data) {
                 $scope.archivePage = data;
 

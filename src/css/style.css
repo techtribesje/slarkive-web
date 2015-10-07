@@ -1,6 +1,48 @@
 html, body {
     padding-top: 0px;
     background-color: #F5F5F5;
+    width: 100%;
+    height: 100%;
+}
+
+/* Header 
+background: url(../img/bg.jpg) no-repeat center center scroll;
+*/
+
+.content-view {
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    background-color: #553C7B;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.text-vertical-center {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vertical-center h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+    color: azure;
+}
+
+.text-vertical-center h3, h4 {
+    color: azure;
 }
 
 .main{
@@ -103,7 +145,7 @@ html, body {
 }
 
 .nav > li > a {
-    padding: 5px 15px;
+    padding: 0px 10px;
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
@@ -122,7 +164,7 @@ html, body {
     min-height: 100%;
     max-height: none;
     overflow: auto;
-    
+
     padding: 20px;
     border-right: 1px solid #eee;
 }
@@ -131,6 +173,8 @@ html, body {
     background-color: #553C7B;
 }
 .sidebar-left h3{
+    margin-top: 0px;
+    margin-bottom: 0px;
     color: white;
 }
 
@@ -144,4 +188,15 @@ html, body {
     padding: 0px;
 }
 
+.sidebar-header{
+    
+}
 
+.sidebar a {
+    color: #eee;
+}
+
+.sidebar .nav-stacked a {
+    color: #ccc;
+    text-decoration: none;
+}

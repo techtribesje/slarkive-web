@@ -39,6 +39,7 @@ app.service("slackServices", function ($http, $log, AppSettings) {
         var url = AppSettings.SlackUrl + endpoint + "?" + qs;
         executeGetRequest(url, callback);
     }
+    
     function executeGetRequest(url, callback) {
         $http.get(url).
         success(function (result) {
